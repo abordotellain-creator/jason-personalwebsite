@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album 2 - Where Curiosity Meets Creation</title>
+    <!-- Signature font (match Sampleportfolio) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" title="Back to portfolio">
+                <img src="Logo.jpg" alt="Logo" />
+            </a>
+            <span class="brand">Jason Tella-in</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#albums">Albums</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Album Gallery Section -->
+    <section class="album-gallery">
+        <h2>Nature's Embrace</h2>
+        <div class="gallery-images" id="gallery">
+            <!-- Gallery will be populated from the Album2/ folder by script below.
+                 Place files named A2-I1.jpg ... A2-I20.jpg inside the `Album2/` folder. -->
+        </div>
+        <a href="index.html">Back to Home</a>
+    </section>
+
+    <!-- Modal Section for Full Image Display -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modalImage" />
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; Where Curiosity Meets Creation</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Populate gallery from Album2/ folder with up to 20 images.
+        (function () {
+            const folder = 'Album2';
+            const count = 20;
+            const gallery = document.getElementById('gallery');
+            if (!gallery) return;
+            for (let i = 1; i <= count; i++) {
+                const img = document.createElement('img');
+                img.loading = 'lazy';
+                img.alt = `Album 2 Image ${i}`;
+                img.src = `${folder}/A2-I${i}.jpg`;
+                img.onclick = function () { if (typeof openModal === 'function') openModal(this); };
+                // hide broken images
+                img.onerror = function () { this.remove(); };
+                gallery.appendChild(img);
+            }
+        })();
+    </script>
+</body>
+
+</html>

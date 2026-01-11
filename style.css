@@ -1,0 +1,930 @@
+/* General Layout and Background */
+/* Make box-sizing predictable */
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2f2d2d;
+    color: white;
+    height: 50px;
+    padding: 5px 5px;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.466);
+}
+
+header .logo h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    transition: font-size 0.3s ease;
+}
+
+/* Logo styles: image + wordmark */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    background: #e6e6e6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.logo .brand {
+    color: white;
+    font-family: 'Great Vibes', 'Pacifico', cursive;
+    font-size: 1.6rem;
+    font-weight: 400;
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(1px);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .logo .brand {
+        font-size: 1.15rem;
+    }
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: white;
+    text-decoration: none;
+    font-size: 2.2vw;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #6a5acd;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('IMG_1170\ \(1\).jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 6vw;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 3vw;
+    margin-top: 10px;
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 20px;
+    background-color: #444;
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.portfolio h2 {
+    font-size: 4vw;
+    margin-bottom: 40px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: center;
+    /* Centers grid items horizontally */
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    /* Stacks content vertically */
+    justify-content: flex-end;
+    /* Aligns the content (text) to the bottom */
+    align-items: center;
+    /* Centers the image horizontally */
+    height: 100%;
+    /* Ensures the item fills the space of its container */
+}
+
+.portfolio-item img {
+    width: 100%;
+    /* Ensure image fits inside its container */
+    height: auto;
+    /* Maintain the aspect ratio */
+    max-width: 280px;
+    /* Optional: restrict max width */
+    object-fit: cover;
+    /* Ensures the image covers its box */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-item p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    /* Adds spacing between the image and the text */
+    color: #ccc;
+}
+
+/* Albums Section */
+.albums {
+    padding: 10px 5px;
+    background-color: #444;
+    color: white;
+    text-align: center;
+    font-size: 1.45rem;
+    /* Reduces space between Portfolio and Albums */
+    border-top: 2px solid #444;
+}
+
+/* Center albums container and constrain width for visual balance */
+.albums {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Album page title centering */
+.album-gallery h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin: 8px auto 14px;
+    font-size: 2rem;
+}
+
+.logo .brand {
+    font-size: 1.15rem;
+}
+
+.albums-grid {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 12px 8px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 1100px;
+    justify-content: center;
+}
+
+.albums-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.albums-grid::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 6px;
+}
+
+.album-item {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 200px;
+    scroll-snap-align: start;
+    margin: 0;
+    padding: 0;
+    border: 2px solid #ddd;
+    /* Add a border around the box */
+    border-radius: 10px;
+    /* Rounded corners for the box */
+    overflow: hidden;
+    /* Ensure the content inside stays within the box */
+    background-color: #fff;
+    /* White background for the box */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Hover effect with shadow */
+}
+
+.album-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 220px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album-item .album-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark background behind the title */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.album-item {
+    flex: 0 0 auto;
+    min-width: 200px;
+    scroll-snap-align: start;
+    margin: 0;
+    padding: 0;
+    background: #c9c1b6;
+    /* Solid background color */
+}
+
+
+/* Album page gallery: responsive grid that adapts to screen size */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 12px auto;
+    padding: 0 12px;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-images img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 600px) {
+    .gallery-images {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+
+    .gallery-images img {
+        border-radius: 6px;
+    }
+}
+
+/* Desktop: enforce 3:2 thumbnail aspect ratio */
+@media (min-width: 1024px) {
+    .gallery-images img {
+        aspect-ratio: 3/2;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* Mobile/tablet: allow natural image sizing (no forced crop) */
+@media (max-width: 1023px) {
+    .gallery-images img {
+        aspect-ratio: auto;
+        height: auto;
+    }
+}
+
+/* Media Queries for Mobile and Laptop Responsiveness */
+
+/* Laptop Screens (max-width: 1280px) */
+@media (max-width: 1280px) {
+    header .logo h1 {
+        font-size: 4vw;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .albums-grid {
+        display: flex;
+        gap: 18px;
+        overflow-x: auto;
+        padding: 10px 6px;
+    }
+
+    .portfolio-item img,
+    .album-item img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Tablet Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .albums-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 18px;
+    }
+
+    .portfolio-item img,
+    .album-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .portfolio-item p {
+        font-size: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+        font-size: 5vw;
+    }
+
+    /* stacked layout for albums on tablet */
+}
+
+/* Mobile Screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-item img,
+    .album-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .portfolio-item p {
+        font-size: 1.2rem;
+    }
+
+    /* Hero Section */
+    .hero h1 {
+        font-size: 6vw;
+    }
+
+    .hero p {
+        font-size: 4vw;
+    }
+
+    .albums-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Small Mobile Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item img,
+    .album-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .portfolio-item p {
+        font-size: 1rem;
+    }
+
+    /* Text size adjustment for better readability on mobile */
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+        font-size: 5vw;
+    }
+
+    .about h2 {
+        font-size: 5vw;
+    }
+
+    .about p {
+        font-size: 1.2rem;
+        max-width: 90%;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 90%;
+    }
+
+    .contact button {
+        padding: 10px 20px;
+    }
+
+    /* Prevent page-level horizontal overflow caused by small rounding/padding */
+    html,
+    body {
+        overflow-x: hidden;
+    }
+}
+
+/* Main container styling for about section */
+.main-container {
+    background-color: #5e5138;
+    /* Light grey background around the About section */
+    padding: 5px;
+}
+
+/* About Me Section */
+.about {
+    background-color: #2c2c2c;
+    padding: 20px;
+    margin-top: 0;
+    text-align: justify;
+    color: #ccc;
+}
+
+.about h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.about p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #ccc;
+}
+
+/* Contact Me Section */
+.contact {
+    background-color: #444;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact input,
+.contact textarea {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    background-color: #333;
+    color: white;
+    transition: border-color 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #6a5acd;
+}
+
+.contact button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact button:hover {
+    background-color: #8a6fbb;
+    transform: scale(1.05);
+}
+
+.contact .socials {
+    margin-top: 20px;
+}
+
+.contact .socials a {
+    color: #6a5acd;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.contact .socials a:hover {
+    color: #8a6fbb;
+}
+
+.contact .socials a:active {
+    color: #5a4d94;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+}
+
+/* Modal - Popup when clicking on an image */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    display: block;
+    width: auto;
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Initially hide the caption when the modal is open */
+.modal.open #caption {
+    display: none;
+}
+
+#caption {
+    text-align: center;
+    color: #ccc;
+    font-size: 18px;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #ccc;
+    font-size: 40px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Experience Section */
+/* Wrapper for Experience Section */
+.experience-wrapper {
+    background-image: url('backg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 20px;
+    /* Padding to ensure the background image covers the area around the content */
+}
+
+/* Experience Section */
+.experience {
+    margin: 20px auto;
+
+    max-width: 1000px;
+    padding: 20px 30px;
+    /* Adds space inside the box */
+    font-size: 1.2rem;
+    background-color: #deccbd;
+    /* Fallback background color */
+    border: 2px solid #c28960;
+    /* Border around the section */
+    border-radius: 10px;
+    /* Rounded corners for the section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow for depth */
+    text-align: justify;
+    /* Justify the text */
+    /* Ensure text is visible on top of the background */
+}
+
+@font-face {
+    font-family: 'Zeantry';
+    src: url('path/to/zeantry.woff2') format('woff2'),
+        url('path/to/zeantry.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.experience h2 {
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Zeantry', serif;
+    /* Apply Zeantry font to h2 only */
+    /* Center the headings */
+}
+
+/* Experience Section Paragraphs */
+.experience p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-align: justify;
+    /* Justify the paragraphs */
+    /* Light gray text for readability */
+}
+
+
+/* Optional: Adds spacing between the items in the experience timeline */
+.timeline-item {
+    margin-bottom: 20px;
+}
+
+/* (Removed horizontally scrollable gallery CSS rules) */
+
+/* Slider styles */
+.slider {
+    padding: 20px 10px;
+    background-color: #444;
+    color: white;
+}
+
+.slider h3 {
+    margin: 0 0 12px 12px;
+    font-size: 1.5rem;
+}
+
+.slider-wrapper {
+    position: relative;
+    overflow: visible;
+    /* keep buttons visible; allow inner track to scroll */
+}
+
+.slider-track {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+}
+
+.slide-card {
+    position: relative;
+}
+
+.thumb-grid {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.thumb {
+    flex: 1 1 0;
+    min-width: 160px;
+    height: 200px;
+    /* 3:2 ratio */
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Keep Nature and Portrait thumbnails at 3:2 even on mobile */
+.category-nature .thumb,
+.category-portraits .thumb {
+    height: 200px;
+}
+
+@media (max-width: 1024px) {
+
+    .category-nature .thumb,
+    .category-portraits .thumb {
+        height: 180px;
+    }
+}
+
+
+.thumb:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.slide-card figcaption {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+.slider-btn:active {
+    transform: translateY(-50%) scale(0.98);
+}
+
+@media (max-width: 1024px) {
+    .thumb {
+        height: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .thumb {
+        height: 150px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .slide-card figcaption {
+        left: 8px;
+        bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Mobile: stack thumbnails and make them full-width to avoid overlap */
+    .thumb-grid {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    .thumb {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Ensure Nature and Portrait thumbnails keep 3:2 ratio on small screens */
+    .category-nature .thumb,
+    .category-portraits .thumb {
+        aspect-ratio: 3/2;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Move caption below images on small screens */
+    .slide-card figcaption {
+        position: static;
+        margin-top: 8px;
+        background: transparent;
+        color: #fff;
+        padding: 0;
+    }
+}
+
+/* Modal should show image at natural size up to viewport */
+.modal-content {
+    /* kept for specificity in case of other rules */
+    display: block;
+    width: auto;
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* Visual hint while dragging */
+.slider-track.dragging {
+    cursor: grabbing;
+}
+
+/* Extra-tight mobile spacing for album lists and galleries */
+@media (max-width: 768px) {
+    .albums-grid {
+        gap: 3px !important;
+        padding: 4px 6px !important;
+    }
+
+    .album-item {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .gallery-images {
+        gap: 6px !important;
+        padding: 4px 6px !important;
+    }
+
+    .gallery-images img {
+        border-radius: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .albums-grid {
+        gap: 6px !important;
+        padding: 6px 6px !important;
+    }
+
+    .gallery-images {
+        gap: 4px !important;
+        padding: 3px 6px !important;
+    }
+}
